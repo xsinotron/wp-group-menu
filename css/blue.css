@@ -1,0 +1,62 @@
+/*
+ * WP GroupMenu CSS
+ * Copyright 2014 Kevon Adonis & vSpider.com
+ * wpgm.vspider.com
+ */
+
+#wpgroupmenu {
+	position:relative;
+	height:50px;
+	background:#00A3D3; // set theme color here - light blue
+	width:100%;
+	font-family:Helvetica,Arial,Verdana,sans-serif;
+}
+
+#wpgroupmenu_nav {
+	position:relative;
+	font-size:12px;
+	text-transform:uppercase;
+        text-shadow: none !important;
+	font-weight:bold;
+	padding:0 50px;
+}
+
+#wpgroupmenu_nav ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	width:auto;
+	float:left;
+}
+
+#wpgroupmenu_nav ul li {
+	display:block;
+	float:left;
+}
+
+#wpgroupmenu_nav ul li a {
+	display:block;
+	float:left;
+	color:#EAF3F8; // link color
+	text-decoration:none;
+	padding: 15px 15px;
+        text-decoration: none;
+}
+
+#wpgroupmenu_nav ul li a:hover {
+	color:#fff;
+        box-shadow: 0px -1px 6px 0px #333;
+}
+
+#wpgroupmenu_nav ul li a:hover span {
+	display:block;
+	width:auto;
+	cursor:pointer;
+}
+
+#wpgroupmenu_nav ul li a.current,#wpgroupmenu_nav ul li a.current:hover { //active
+	color:#fff;
+        box-shadow: 0px -1px 6px 0px #333;
+}
+
+
