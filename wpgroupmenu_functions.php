@@ -4,21 +4,24 @@ function wpgroupmenu_manageSites() {
     global $wpdb;
     if($_POST){
         if(isset($_POST['task']) && ($_POST['task'] == 'new' || $_POST['task'] == 'edit')){
-            
+
             $task       = sanitize_text_field($_POST['task']);
             $siteName   = trim(sanitize_text_field($_POST['wpgm_siteName']));
             $siteUrl    = wpgroupmenu_formatURL(trim(sanitize_text_field($_POST['wpgm_siteUrl'])));
+            $siteIcon   = wpgroupmenu_formatURL(trim(sanitize_text_field($_POST['wpgm_siteIcon'])));
             $siteId     = wpgroupmenu_generateKey($siteUrl);
             $siteAlt    = trim(sanitize_text_field($_POST['wpgm_siteAlt']));
             $siteTarget = trim(sanitize_text_field($_POST['wpgm_siteTarget']));
             $siteOrder  = trim(sanitize_text_field($_POST['wpgm_siteOrder']));
           //define( 'DIEONDBERROR', true );
             $wpdb->show_errors();
-            
+
             $site = array(
+                // siteIcon !
                 'siteOrder' => $siteOrder,
                 'siteName'  => $siteName,
                 'siteUrl'   => $siteUrl,
+                'siteIcon'  => $siteIcon,
                 'siteAlt'   => $siteAlt,
                 'siteTarget'=> $siteTarget,
                 'siteId'    => $siteId
@@ -114,7 +117,7 @@ function wpgroupmenu_showmenu(){
                <?php } ?>
             </ul>
         </div>
-        
+
         <div class="wpgroupmenu_nav_mobi">
             <div class="wpgroupmenu_nav wpgroupmenu_toggle">
                 <ul>
@@ -152,4 +155,3 @@ function wpgroupmenu_message($message){ ?>
     <div id="message" class="updated"><p><strong><?php echo $message; ?></strong></p></div>
     <?php
 }
-

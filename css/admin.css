@@ -34,22 +34,25 @@ body.loading {
 .hidden{
     display: none;
 }
-.wp-list-table .column-siteName {
+.wp-list-table .column-siteOrder {
     width: 10%;
+}
+.wp-list-table .column-siteName {
+    width: 20%;
 }
 .wp-list-table .column-siteUrl {
     width: 20%;
 }
 .wp-list-table .column-siteId {
-    width: 23%;
+    width: 0%;
+}
+.wp-list-table .column-siteIcon {
+    width: 20%;
 }
 .wp-list-table .column-siteAlt {
-    width: 22%;
+    width: 20%;
 }
 .wp-list-table .column-siteTarget {
-    width: 5%;
-}
-.wp-list-table .column-siteOrder {
     width: 10%;
 }
 .settings_tip{
@@ -106,4 +109,10 @@ body.loading {
 }
 #wpgm_css_image{
     float: right;
+}
+#dialog-form button {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
 }

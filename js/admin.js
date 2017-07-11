@@ -32,6 +32,7 @@ function wpgroupmenu_addSite(){
         siteAlt    = jQuery( "#siteAlt"    ),
         siteTarget = jQuery( "#siteTarget" ),
         siteOrder  = jQuery( "#siteOrder"  ),
+        //
         allFields  = jQuery( [] ).add( siteName ).add( siteUrl ),
         tips       = jQuery( ".validateTips" );
 
@@ -89,7 +90,7 @@ function wpgroupmenu_editSite(id){
        allFields  = jQuery( [] ).add(siteName).add(siteUrl).add(siteAlt).add(siteTarget).add(siteOrder),
        tips       = jQuery( ".validateTips" ),
        editBox    = jQuery( "#dialog-form" );
-    
+
     editBox.dialog({
         dialogClass   : 'wp-dialog',
         modal         : true,

@@ -35,15 +35,18 @@ function wpgroupmenu_deleteSite($id, $message){
 function wpgroupmenu_showSites(){ ?>
     <h2>Sites   <input type="button" onclick="wpgroupmenu_addSite()" class="button-primary" id="wpgm_addSite" value="Add Site"></h2>
     <div id="dialog-form" class="hidden">
-        <p class="validateTips">Enter the name and URL of the site.</p>
         <form>
             <fieldset>
-                <label for="siteName">Site Name</label>
+                <p class="validateTips hidden">Enter the name and URL of the site.</p>
+                <label for="siteName">Site Name <span title="required">*</span></label>
                 <input type="text" name="siteName" id="siteName" class="text ui-widget-content ui-corner-all">
-                <label for="siteUrl">Site URL</label>
+                <label for="siteUrl">Site URL <span title="required">*</span></label>
                 <input type="text" name="siteUrl" id="siteUrl" class="text ui-widget-content ui-corner-all">
                 <label for="siteAlt">Site Alt</label>
                 <input type="text" name="siteAlt" id="siteAlt" class="text ui-widget-content ui-corner-all">
+                <label for="siteIcon">Site Icon</label>
+                <?php include("wpgroupmenu_icons.html"); ?>
+                <input type="text" name="siteIcon" id="siteIcon" class="text ui-widget-content ui-corner-all">
                 <label for="siteTarget">Site Target</label>
                 <select name="siteTarget" id="siteTarget">
                     <option value=""     >Same page</option>

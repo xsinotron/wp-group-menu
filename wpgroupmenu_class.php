@@ -29,12 +29,14 @@ class WPGroupMenu_List extends WP_List_Table {
 
     function column_default( $item, $column_name ) {
         switch( $column_name ) {
-          case 'siteUrl': echo $item->$column_name; break;
-        //case 'siteIcon': echo $item->$column_name; break;
-          case 'siteId':     echo $item->$column_name; break;
-          case 'siteAlt':    echo $item->$column_name; break;
-          case 'siteTarget': echo $item->$column_name; break;
-          case 'siteOrder':  echo $item->$column_name; break;
+          case 'siteUrl':
+          case 'siteIcon':
+          case 'siteId':
+          case 'siteAlt':
+          case 'siteTarget':
+          case 'siteOrder':
+            echo $item->$column_name;
+            break;
         }
     }
     /**
@@ -42,46 +44,45 @@ class WPGroupMenu_List extends WP_List_Table {
      **/
     public function display_options () {
         global $wpdb, $_wp_column_headers;
-        
+
         $table_name = $wpdb->base_prefix."wpgroupmenu_sites";
         $query = "SELECT * FROM  . $table_name";
-        
+
         $totalitems = $wpdb->query($query);
         $positions = array();
         $items      = $wpdb->get_results($query, ARRAY_A);
-        
+
         foreach ($items as $elt) {
                 $positions[ $elt["siteOrder"] ] = $elt;
         }
         ksort($positions);
-        
+
         $options = "";
         $i       = 0;
         for($i = 0; $i < $totalitems; $i++){
             $id = $i+1;
             $current_value = $positions[$id]["siteName"];
             $i_read  = ( ($i<10) ? "0$id" : "$id" ) . ( ( $current_value != "" ) ? " : $current_value" : " : <i>empty</i>");
-            
+
             $options .= "<option value='$id'>$i_read</option>\n";
         }
-        
+
         $id = $i+1;
         $current_value = $positions[$id]["siteName"];
         $i_read  = ( ($i<10) ? "0$id" : "$id" ) . " : <i>new</i>";
         $options .= "<option value='$id'>$i_read</option>\n";
-        
+
         return $options;//.print_r($positions, true);
     }
     function get_columns(){
         $columns = array(
             'cb'         => '<input type="checkbox" />',
-            'siteOrder'  => 'Position',
-            'siteName'   => 'Site Name',
-          //'siteIcon' => 'Site Icon',
+            'siteOrder'  => 'Order',
+            'siteName'   => 'Name',
+            'siteIcon'   => 'Icon',
             'siteAlt'    => 'Alt Text',
-            'siteUrl'    => 'Site URL',
-            'siteTarget' => 'target',
-            'siteId'     => 'Site ID'
+            'siteUrl'    => 'URL',
+            'siteTarget' => 'target'
         );
         return $columns;
     }
@@ -152,4 +153,3 @@ class WPGroupMenu_List extends WP_List_Table {
     }
 
 }
-

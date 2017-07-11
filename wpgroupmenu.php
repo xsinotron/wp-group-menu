@@ -23,10 +23,38 @@ register_activation_hook(__FILE__,'wpgroupmenu_initialize');
 
 
 function register_wpgroupmenu_menu(){
-    add_menu_page( 'WP Group Menu', 'WP Group Menu', 'manage_options', 'wpgroupmenu', 'wpgroupmenu_dashboard', plugins_url( 'images/icon.png', __FILE__), 99 );
-    add_submenu_page( 'wpgroupmenu', 'Manage Menus', 'Manage Menus', 'manage_options', 'admin.php?page=wpgroupmenu&tab=manage' );
-    add_submenu_page( 'wpgroupmenu', 'Settings', 'Settings', 'manage_options', 'admin.php?page=wpgroupmenu&tab=settings' );
-    add_submenu_page( 'wpgroupmenu', 'User Guide', 'User Guide', 'manage_options', 'admin.php?page=wpgroupmenu&tab=userguide' );
+    // MENU
+    add_menu_page(
+        'WP Group Menu',                           // page title
+        'WP Group Menu',                           // menu title
+        'manage_options',                          // capability
+        'wpgroupmenu',                             // menu slug
+        'wpgroupmenu_dashboard',                   // function to call to output the content
+        plugins_url( 'images/icon.png', __FILE__), // icon url
+        99                                         //position
+    );
+    // SUB-MENUS
+        add_submenu_page(
+            'wpgroupmenu',                         // parent slug
+            'Manage Menus',                        // page title
+            'Manage Menus',                        // menu title
+            'manage_options',                      // capability
+            'admin.php?page=wpgroupmenu&tab=manage'// menu slug
+        );
+        add_submenu_page(
+            'wpgroupmenu',
+            'Settings',
+            'Settings',
+            'manage_options',
+            'admin.php?page=wpgroupmenu&tab=settings'
+        );
+        add_submenu_page(
+            'wpgroupmenu',
+            'User Guide',
+            'User Guide',
+            'manage_options',
+            'admin.php?page=wpgroupmenu&tab=userguide'
+        );
     remove_submenu_page('wpgroupmenu','wpgroupmenu');
 }
 
@@ -47,28 +75,26 @@ function wpgroupmenu_dashboard() {
         wpgroupmenu_admin_tabs('manage');
     }
     if ( $pagenow == 'admin.php' && $_GET['page'] == 'wpgroupmenu' ){
-	if ( isset ( $_GET['tab'] ) ) {
-	    $tab = $_GET['tab'];
-	}
-	else {
-            $tab = 'manage';
+        if ( isset ( $_GET['tab'] ) ) {
+            $tab = $_GET['tab'];
         }
-        switch ( $tab ){
-            case 'manage' :
-                include 'wpgroupmenu_manage.php';
-                break;
-	    case 'settings' :
-                include 'wpgroupmenu_settings.php';
-                break;
-            case 'userguide' :
-                include 'wpgroupmenu_userguide.php';
-                break;
-            default:
-                include 'wpgroupmenu_manage.php';
-	}
-
+        else {
+                $tab = 'manage';
+            }
+            switch ( $tab ){
+                case 'manage' :
+                    include 'wpgroupmenu_manage.php';
+                    break;
+            case 'settings' :
+                    include 'wpgroupmenu_settings.php';
+                    break;
+                case 'userguide' :
+                    include 'wpgroupmenu_userguide.php';
+                    break;
+                default:
+                    include 'wpgroupmenu_manage.php';
+        }
     }
-
 }
 
 function wpgroupmenu_admin_tabs( $current = 'manage' ) {
@@ -102,6 +128,7 @@ function wpgroupmenu_admin_util() {
     wp_enqueue_script( 'admin_scripts', plugins_url('js/admin.js'     , __FILE__), array( 'jquery' ));
     wp_localize_script( 'ajax_scripts', 'front_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
     wp_enqueue_style( 'style', plugins_url('css/admin.css', __FILE__) );
+    wp_enqueue_style( 'font_awesome', plugins_url('vendor/font-awesome-4.7.0/css/font-awesome.min.css', __FILE__) );
     wp_enqueue_script( 'jquery-ui' );
     $ui = $wp_scripts->query('jquery-ui-core');
     $url = "http://code.jquery.com/ui/{$ui->ver}/themes/smoothness/jquery-ui.css";
@@ -113,6 +140,7 @@ function wpgroupmenu_front_util() {
     $style = get_option('wpgroupmenu_css');
   //wp_enqueue_script( 'scripts'   , plugins_url('js/scripts.js', __FILE__), array( 'jquery' ));
     wp_enqueue_script( 'menu_scripts' , plugins_url('js/group-menu.js', __FILE__), array( 'jquery' ));
+    wp_enqueue_style( 'font_awesome', plugins_url('vendor/font-awesome-4.7.0/css/font-awesome.min.css', __FILE__) );
     wp_enqueue_style ( 'menu_style', plugins_url('css/ymaa.css' , __FILE__)                   );
 }
 
@@ -120,17 +148,16 @@ function wpgroupmenu_install() {
    global $wpdb;
    require_once(ABSPATH.'wp-admin/includes/upgrade.php');
    $table_name = $wpdb->base_prefix."wpgroupmenu_sites";
-   $sql = "CREATE TABLE ".$table_name." (
-		  sid int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-		  siteName varchar(55),
-		  siteUrl varchar(255),
-		  siteIcon varchar(55),
-		  siteId varchar(55),
-                  siteAlt varchar(255),
-		  siteTarget varchar(55),
-		  siteOrder int(11),
-		  PRIMARY KEY (sid)
-	  );";
+   $sql = "CREATE TABLE $table_name (".
+          "sid int(11) UNSIGNED NOT NULL AUTO_INCREMENT, ".// Identifiant unique
+          "siteName varchar(55), ".                        // Nom affiché
+          "siteUrl varchar(255), ".                        // URL de destination
+          "siteIcon varchar(255), ".                       // URL du site
+          "siteId varchar(55), ".                          // Identifiant
+          "siteAlt varchar(255), ".                        // Titre de la balise html
+          "siteTarget varchar(55), ".                      // mode d'ouverture du lien : blank, same
+          "siteOrder int(11), ".                           // disposition dans la liste des liens
+          "PRIMARY KEY (sid));";
     dbDelta($sql);
     add_option("wpgroupmenu_version", WPGROUPMENU_VERSION);
     add_option("wpgroupmenu_css", 'ymaa');
