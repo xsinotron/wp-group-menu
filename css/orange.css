@@ -1,62 +1,30 @@
 /*
  * WP GroupMenu CSS
- * Copyright 2014 Kevon Adonis & vSpider.com
- * wpgm.vspider.com
+ * Copyright 2017 Alexis Collin
  */
-
-#wpgroupmenu {
-	position:relative;
-	height:50px;
-	background:#FE5E00; // set theme color here - orange
-	width:100%;
-	font-family:Helvetica,Arial,Verdana,sans-serif;
+/* BACKGROUND */
+.wpgroupmenu,
+.wpgroupmenu_nav,
+.wpgroupmenu_mobi{
+	background: #FE5E00;
 }
-
-#wpgroupmenu_nav {
-	position:relative;
-	font-size:12px;
-	text-transform:uppercase;
-        text-shadow: none !important;
-	font-weight:bold;
-	padding:0 50px;
-}
-
-#wpgroupmenu_nav ul {
-	margin:0;
-	padding:0;
-	list-style-type:none;
-	width:auto;
-	float:left;
-}
-
-#wpgroupmenu_nav ul li {
-	display:block;
-	float:left;
-}
-
-#wpgroupmenu_nav ul li a {
-	display:block;
-	float:left;
-	color:#EAF3F8; // link color
-	text-decoration:none;
+.wpgroupmenu_nav {}
+.wpgroupmenu_nav ul {}
+.wpgroupmenu_nav ul li {}
+/* LINK */
+.wpgroupmenu_nav ul li a {
+	color: #EAF3F8;
+	text-decoration: none;
 	padding: 15px 15px;
-        text-decoration: none;
 }
-
-#wpgroupmenu_nav ul li a:hover {
-	color:#fff;
-        box-shadow: 0px -1px 6px 0px #333;
+.wpgroupmenu_nav ul li a:hover {
+	color: #FFFFFF;
+    box-shadow: 0px -1px 6px 0px #333333;
 }
-
-#wpgroupmenu_nav ul li a:hover span {
-	display:block;
-	width:auto;
-	cursor:pointer;
+.wpgroupmenu_nav ul li a:hover span {}
+/* ACTIVE */
+.wpgroupmenu_nav ul li a.current,
+.wpgroupmenu_nav ul li a.current:hover {
+	color: #FFFFFF;
+    box-shadow: 0px -1px 6px 0px #333333;
 }
-
-#wpgroupmenu_nav ul li a.current,#wpgroupmenu_nav ul li a.current:hover { //active
-	color:#fff;
-        box-shadow: 0px -1px 6px 0px #333;
-}
-
-

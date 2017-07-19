@@ -25,36 +25,40 @@ function wpgroupmenu_deleteSite($id, $message){
         $wpdb->query("delete FROM ".$wpdb->base_prefix."wpgroupmenu_sites WHERE sid=".$sid);
         //wpgroupmenu_updateJson();
     }else{
-        "You do not have permission to delete this entry";
+        wpgroupmenu_message( __("You do not have permission to delete this entry", "wgm") );
     }
     if($message){
-        wpgroupmenu_message( $siteName->siteName . " was successfully deleted");
+        wpgroupmenu_message( $siteName->siteName . __(" was successfully deleted", "wgm") );
     }
 }
 
-function wpgroupmenu_showSites(){ ?>
-    <h2>Sites   <input type="button" onclick="wpgroupmenu_addSite()" class="button-primary" id="wpgm_addSite" value="Add Site"></h2>
+function wpgroupmenu_showSites(){
+    ?>
+    <h2>
+        <?=__('Sites','wgm');?>
+        <input type="button" onclick="wpgroupmenu_addSite()" class="button-primary" id="wpgm_addSite" value="<?=__('Add Site','wgm');?>">
+    </h2>
     <div id="dialog-form" class="hidden">
         <form>
             <fieldset>
-                <p class="validateTips hidden">Enter the name and URL of the site.</p>
-                <label for="siteName">Site Name <span title="required">*</span></label>
+                <p class="validateTips hidden"><?=__('Enter the name and URL of the site.','wgm');?></p>
+                <label for="siteName"><?=__('Site Name','wgm');?> <span title="<?=__('required','wgm');?>">*</span></label>
                 <input type="text" name="siteName" id="siteName" class="text ui-widget-content ui-corner-all">
-                <label for="siteUrl">Site URL <span title="required">*</span></label>
+                <label for="siteUrl"><?=__('Site URL','wgm');?> <span title="<?=__('required','wgm');?>">*</span></label>
                 <input type="text" name="siteUrl" id="siteUrl" class="text ui-widget-content ui-corner-all">
-                <label for="siteAlt">Site Alt</label>
+                <label for="siteAlt"><?=__('Site Alt','wgm');?></label>
                 <input type="text" name="siteAlt" id="siteAlt" class="text ui-widget-content ui-corner-all">
-                <label for="siteIcon">Site Icon</label>
-                <?php include("wpgroupmenu_icons.html"); ?>
+                <label for="siteIcon"><?=__('Site Icon','wgm');?></label>
+                <?php /*include("icons.html");*/?>
                 <input type="text" name="siteIcon" id="siteIcon" class="text ui-widget-content ui-corner-all">
-                <label for="siteTarget">Site Target</label>
+                <label for="siteTarget"><?=__('Site Target','wgm');?></label>
                 <select name="siteTarget" id="siteTarget">
-                    <option value=""     >Same page</option>
-                    <option value="blank">New page</option>
+                    <option value=""     ><?=__('Same page','wgm');?></option>
+                    <option value="blank"><?=__('New page','wgm');?></option>
                 </select>
-                <label for="siteOrder">Site Order</label>
+                <label for="siteOrder"><?=__('Site Order','wgm');?></label>
                 <select name="siteOrder" id="siteOrder">
-                    <option value="" disabled selected >-- Choose a position</option>
+                    <option value="" disabled selected >-- <?=__('Choose a position','wgm');?></option>
                     <?php
                         $showPositions = new WPGroupMenu_List();
                         $showPositions->prepare_items();
@@ -74,5 +78,5 @@ function wpgroupmenu_showSites(){ ?>
             ?>
     </form>
     <div class="ajax_loader"></div>
-        <?php
+    <?php
 }

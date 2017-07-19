@@ -1,0 +1,83 @@
+/*
+ * WP GroupMenu CSS
+ * Copyright 2014 Kevon Adonis & vSpider.com
+ * Copyright 2017 Alexis Collin
+ * wpgm.vspider.com
+ */
+/* MAIN CONTAINERS */
+.wpgroupmenu {
+    position: fixed;
+    height: 50px;
+    background: transparent;
+    width: 100%;
+    font-family: Helvetica,Arial,Verdana,sans-serif;
+    z-index: 11000;
+}
+.wpgroupmenu_mobi{display: none;}
+.wpgroupmenu_nav.opened {display: block;}
+.wpgroupmenu_nav.closed {display: none; }
+/* Admin view */
+.admin-bar .wpgroupmenu {z-index: 99999; top: 32px}
+/* NAVIGATION BOX */
+.wpgroupmenu_nav {
+    display: block;
+    position:relative;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: none;
+    padding: 0;
+}
+/* LIST */
+.wpgroupmenu_nav ul {
+    margin:0;
+    padding:0;
+    list-style-type:none;
+}
+.wpgroupmenu_nav ul li {
+    display:block;
+    float:left;
+}
+/* BUTTON */
+.wpgroupmenu_nav ul li a {
+    display:block;
+    float:left;
+    color: blue;
+    text-decoration: underline;
+    padding: 8px 20px;
+    line-height: auto;
+    cursor:pointer;
+}
+/* ACTIVE */
+.wpgroupmenu_nav ul li a.current,
+.wpgroupmenu_nav ul li a.current:hover {
+    color: #333333;
+    text-decoration: none;
+}
+/* MENU MOBILE */
+.wpgroupmenu_mobi .wpgroupmenu_nav{
+    float: left;
+    clear: left;
+    z-index: 1000;
+}
+.wpgroupmenu_mobi .wpgroupmenu_toggle ul li a:after{content: " SITES ";}
+/*Responsive Styles */
+@media screen and (max-width : 1025px){
+
+    .wpgroupmenu > .wpgroupmenu_nav{display: none; }
+     .wpgroupmenu_mobi             {display: block;}
+
+    .wpgroupmenu_mobi  .wpgroupmenu_nav   ,
+    .wpgroupmenu_mobi  .wpgroupmenu_nav ul,
+    .wpgroupmenu_mobi  .wpgroupmenu_nav li,
+    .wpgroupmenu_mobi  .wpgroupmenu_nav li a {
+      width: 100%;
+    }
+    .wpgroupmenu_mobi .wpgroupmenu_nav ul li a span{display: inline-block;}
+}
+@media screen and (max-width: 782px) {
+    .admin-bar .wpgroupmenu {
+        z-index: 99999;
+         top: 46px
+     }
+}

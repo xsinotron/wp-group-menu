@@ -3,8 +3,8 @@ Contributors: kevon.adonis
 Donate link: http://www.kevonadonis.com/donate
 Tags: menus, multisite menu, top menu, group menu
 Requires at least: 3.0.1
-Tested up to: 3.9.1
-Stable tag: 0.1
+Tested up to: 4.8.0
+Stable tag: 0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,4 +38,3 @@ Please feel free to request more themes and features (email @ kevonadonis.com )
 
 = 0.1 =
 Initial Release
-

@@ -169,6 +169,6 @@ function loadWait(){
 
 
 function wpgroupmenu_loadCssPreview(plugin_url, style){
-    var url = plugin_url + 'previews/' + style.value + '.png';
+    var url = plugin_url + style.value + '.png';
     jQuery("#wpgm_css_image").html("<img src=" +url + ">");
 }

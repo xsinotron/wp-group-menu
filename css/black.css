@@ -1,72 +1,32 @@
 /*
  * WP GroupMenu CSS
- * Copyright 2014 Kevon Adonis & vSpider.com
- * wpgm.vspider.com
+ * Copyright 2017 Alexis Collin
  */
-
-#wpgroupmenu {
-	position:relative;
-	height:50px;
-	background:#111111; // set theme color here - black
-	width:100%;
-	font-family:Helvetica,Arial,Verdana,sans-serif;
-	z-index: 10000;
+/* BACKGROUND */
+.wpgroupmenu,
+.wpgroupmenu_nav,
+.wpgroupmenu_mobi{
+	background: #111111;
 }
-
-#wpgroupmenu_nav {
-	position:relative;
-	font-size:12px;
-	text-transform:uppercase;
-        text-shadow: none !important;
-	font-weight:bold;
-	padding:0 50px;
+.wpgroupmenu_nav {}
+.wpgroupmenu_nav ul {}
+.wpgroupmenu_nav ul li {}
+/* LINK */
+.wpgroupmenu_nav ul li a {
+	color: #EEEEEE;
+	text-decoration: none;
+	padding: 15px 15px;
 }
-
-#wpgroupmenu_nav ul {
-	margin:0;
-	padding:0;
-	list-style-type:none;
-	width:auto;
-	float:left;
+.wpgroupmenu_nav ul li a:hover {
+	color: #333333;
+	background: #FFFFFF;
+    box-shadow: 0px -1px 6px 0px #FFFFFF;
 }
-
-#wpgroupmenu_nav ul li {
-	display:block;
-	float:left;
+.wpgroupmenu_nav ul li a:hover span {}
+/* ACTIVE */
+.wpgroupmenu_nav ul li a.current,
+.wpgroupmenu_nav ul li a.current:hover {
+	color: #333333;
+	background: #FFFFFF;
 }
-
-#wpgroupmenu_nav ul li a {
-	display:block;
-	float:left;
-	color:#ffffff; // link color
-	text-decoration:none;
-	padding: 8px 20px;
-    line-height: 2.8em;
-    text-decoration: none;
-}
-
-#wpgroupmenu_nav ul li a:hover {
-	color: #000000;
-	background-color:#EFEFEF;
-}
-
-#wpgroupmenu_nav ul li a:hover span {
-	display:block;
-	width:auto;
-	cursor:pointer;
-}
-
-#wpgroupmenu_nav ul li a.current, #wpgroupmenu_nav ul li a.current:hover {
-	color: #000000;
-	background-color:#FFFFFF;
-}
-#wpgroupmenu_nav ul li a[href="#"],
-#wpgroupmenu_nav ul li a[href="#"]:hover {
-	color: #EEE;
-	background-color:transparent;
-	cursor: default;
-}
-#wpgroupmenu_nav ul li a[href="#"]:after{
-content: " : ";}
-
-
+.wpgroupmenu_nav ul li a[href="#"]:after{content: " YMAA ";}

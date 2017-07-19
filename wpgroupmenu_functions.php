@@ -88,7 +88,11 @@ function wpgroupmenu_updateJson(){
     $menu_file = WPGROUPMENU_PLUGIN_DIR . "menus.json";
     file_put_contents($menu_file, json_encode($menus));
 }
-
+/**
+ * [wpgroupmenu_formatURL description]
+ * @param  [type] $url [description]
+ * @return [type]      [description]
+ */
 function wpgroupmenu_formatURL($url){
     $regex = "@(https?://)*(www\.)*[a-zA-Z0-9-]{1,61}[\.a-zA-Z]+[\/a-zA-Z0-9-]*@";
     preg_match($regex, $url, $matches);
@@ -100,58 +104,28 @@ function wpgroupmenu_formatURL($url){
     }
     return $url;
 }
-
-
+/**
+ * [wpgroupmenu_showmenu description]
+ * @return [type] [description]
+ */
 function wpgroupmenu_showmenu(){
     $menus = wpgroupmenu_getmenus();
-    $siteID = wpgroupmenu_generateKey(get_option('siteurl'));?>
-    <div id="wpgroupmenu">
-        <div class="wpgroupmenu_nav">
-            <ul>
-                <?php foreach($menus as $menu){ ?>
-                <li>
-                    <a href="<?php echo $menu->siteUrl; ?>" <?php if($menu->siteId == $siteID) {echo "class=current";} if ($menu->siteTarget == "blank") {echo "target='_blank'"; } ?> >
-                        <span><?php echo $menu->siteName; ?></span>
-                    </a>
-                </li>
-               <?php } ?>
-            </ul>
-        </div>
-
-        <div class="wpgroupmenu_nav_mobi">
-            <div class="wpgroupmenu_nav wpgroupmenu_toggle">
-                <ul>
-                    <li>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-menu-hamburger"></span> YMAA
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <nav role="navigation" class="wpgroupmenu_nav closed">
-                <ul>
-                    <?php foreach($menus as $menu){ ?>
-                        <li><a href="<?php echo $menu->siteUrl; ?>" <?php if($menu->siteId == $siteID) {echo "class=current";} if ($menu->siteTarget == "blank") {echo "target='_blank'"; } ?> ><span><?php echo $menu->siteName; ?></span></a></li>
-                   <?php } ?>
-                </ul>
-            </nav>
-        </div>
-    </div>
-   <?php
+    $siteID = wpgroupmenu_generateKey(get_option('siteurl'));
+    include ("views/menu.php");
 }
-
+/**
+ * [wpgroupmenu_generateKey description]
+ * @param  [type] $url [description]
+ * @return [type]      [description]
+ */
 function wpgroupmenu_generateKey($url){
     return md5($url);
 }
-
-function wpgroupmenu_redirect($tab){ ?>
-    <script type="text/javascript">
-        window.location = '<?php echo $tab; ?>';
-    </script>
-<?php
-}
-
-function wpgroupmenu_message($message){ ?>
-    <div id="message" class="updated"><p><strong><?php echo $message; ?></strong></p></div>
-    <?php
+/**
+ * [wpgroupmenu_message description]
+ * @param  [type] $message [description]
+ * @return [type]          [description]
+ */
+function wpgroupmenu_message( $message ){
+    include "views/message.php";
 }

@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * [WPGroupMenu_List description]
+ * Gestion des listes de liens
+ */
 class WPGroupMenu_List extends WP_List_Table {
 
     function __construct(){
@@ -17,8 +20,8 @@ class WPGroupMenu_List extends WP_List_Table {
 
     function column_siteName($item){
         $actions = array(
-            'edit'      => sprintf('<a href="javascript:wpgroupmenu_editSite(%s)">Edit</a>',$item->sid),
-            'delete'    => sprintf('<a href="javascript:wpgroupmenu_delete(%s)">Delete</a>', $item->sid)
+            'edit'      => sprintf('<a href="javascript:wpgroupmenu_editSite(%s)">'.__("Edit", 'wgm').'</a>',$item->sid),
+            'delete'    => sprintf('<a href="javascript:wpgroupmenu_delete(%s)">'.__("Delete", 'wgm').'</a>', $item->sid)
         );
         return sprintf('%1$s<span style="color:silver"></span>%2$s',$item->siteName, $this->row_actions($actions));
     }
@@ -46,7 +49,7 @@ class WPGroupMenu_List extends WP_List_Table {
         global $wpdb, $_wp_column_headers;
 
         $table_name = $wpdb->base_prefix."wpgroupmenu_sites";
-        $query = "SELECT * FROM  . $table_name";
+        $query = "SELECT * FROM $table_name ORDER BY siteOrder ASC";
 
         $totalitems = $wpdb->query($query);
         $positions = array();
@@ -77,12 +80,12 @@ class WPGroupMenu_List extends WP_List_Table {
     function get_columns(){
         $columns = array(
             'cb'         => '<input type="checkbox" />',
-            'siteOrder'  => 'Order',
-            'siteName'   => 'Name',
-            'siteIcon'   => 'Icon',
-            'siteAlt'    => 'Alt Text',
-            'siteUrl'    => 'URL',
-            'siteTarget' => 'target'
+            'siteOrder'  => __('Order', 'wgm'),
+            'siteName'   => __('Name', 'wgm'),
+            'siteIcon'   => __('Icon', 'wgm'),
+            'siteAlt'    => __('Alt Text', 'wgm'),
+            'siteUrl'    => __('URL', 'wgm'),
+            'siteTarget' => __('target', 'wgm')
         );
         return $columns;
     }
@@ -96,7 +99,7 @@ class WPGroupMenu_List extends WP_List_Table {
 
     function get_bulk_actions() {
         $actions = array(
-            'delete'    => 'Delete'
+            'delete'    => __('Delete', 'wgm')
         );
         return $actions;
     }
@@ -113,15 +116,15 @@ class WPGroupMenu_List extends WP_List_Table {
         global $wpdb, $_wp_column_headers;
 	$screen = get_current_screen();
         $table_name = $wpdb->base_prefix."wpgroupmenu_sites";
-        $query = "SELECT * FROM  . $table_name";
-        $orderby = !empty($_GET["orderby"]) ? mysql_real_escape_string($_GET["orderby"]) : 'sid';
-        $order   = !empty($_GET["order"])   ? mysql_real_escape_string($_GET["order"])   : 'desc';
-        if(!empty($orderby) & !empty($order)){ $query.=' ORDER BY '.$orderby.' '.$order; }
+        $query = "SELECT * FROM $table_name";
+        $orderby = !empty($_GET["orderby"]) ? $_GET["orderby"] : 'sid';
+        $order   = !empty($_GET["order"])   ? $_GET["order"]   : 'ASC';
+        if( !empty($orderby) & !empty($order) ){ $query.=' ORDER BY '.$orderby.' '.$order; }
         $totalitems = $wpdb->query($query);
         //How many to display per page?
         $perpage = 15;
         //Which page is this?
-        $paged = !empty($_GET["paged"]) ? mysql_real_escape_string($_GET["paged"]) : '';
+        $paged = !empty($_GET["paged"]) ? $_GET["paged"] : '';
         //Page Number
         if(empty($paged) || !is_numeric($paged) || $paged<=0 ){ $paged=1; }
         //How many pages do we have in total?
