@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Weekly Schedule version 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-18 12:19+0200\n"
-"PO-Revision-Date: 2017-07-18 12:20+0200\n"
+"POT-Creation-Date: 2017-07-19 11:48+0200\n"
+"PO-Revision-Date: 2017-07-19 11:48+0200\n"
 "Last-Translator: FxB <fx@fxbenard.com>\n"
 "Language-Team: MondayKing <alecollin@gmail.com>\n"
 "Language: fr_FR\n"
@@ -19,13 +19,7 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#. Description of the plugin/theme
-msgid ""
-"Adds a universal topmenu amoung sister websites. Manage menus from one central location and use the client plugin on remaining sites."
-msgstr ""
-"Ajouter un menu universel à votre réseau de sites. Gérer ce menu depuis une seule interface."
-
-#: views/header.php:3 wpgroupmenu.php:51 wpgroupmenu.php:52
+#: views/header.php:3 wpgroupmenu.php:53 wpgroupmenu.php:54
 msgid "WP Group Menu"
 msgstr "Menu multi-sites"
 
@@ -46,8 +40,8 @@ msgid "You do not have permission to delete this entry"
 msgstr "Vous n’avez pas la permission de supprimer ce lien"
 
 #: views/manage.php:31
-msgid " was successfully deleted"
-msgstr "a été supprimé avec succès"
+msgid "was successfully deleted"
+msgstr "a bien été supprimé."
 
 #: views/manage.php:38
 msgid "Sites"
@@ -105,8 +99,8 @@ msgstr "Choisir une position"
 msgid "Configurations saved"
 msgstr "Configuration sauvegardée"
 
-#: views/settings.php:26 wpgroupmenu.php:69 wpgroupmenu.php:70
-#: wpgroupmenu.php:118
+#: views/settings.php:26 wpgroupmenu.php:71 wpgroupmenu.php:72
+#: wpgroupmenu.php:120
 msgid "Settings"
 msgstr "Paramétrages"
 
@@ -114,11 +108,11 @@ msgstr "Paramétrages"
 msgid "Choose Menu Style"
 msgstr "Choix du style de menu"
 
-#: views/settings.php:43
+#: views/settings.php:44
 msgid "Menu Preview"
 msgstr "Aperçu du menu"
 
-#: views/settings.php:48
+#: views/settings.php:49
 msgid "Save"
 msgstr "Sauvegarder"
 
@@ -210,15 +204,15 @@ msgstr ""
 "De cette façon un changement depuis un des sites filles se reflètent "
 "automatiquement sur tous les autres sites. "
 
-#: wpgroupmenu.php:62 wpgroupmenu.php:63
+#: wpgroupmenu.php:64 wpgroupmenu.php:65
 msgid "Manage Menus"
 msgstr "Administration"
 
-#: wpgroupmenu.php:76 wpgroupmenu.php:77 wpgroupmenu.php:119
+#: wpgroupmenu.php:78 wpgroupmenu.php:79 wpgroupmenu.php:121
 msgid "User Guide"
 msgstr "Guide Utilisateur"
 
-#: wpgroupmenu.php:117
+#: wpgroupmenu.php:119
 msgid "Manage"
 msgstr "Gestion"
 
@@ -300,6 +294,16 @@ msgstr "Blanc"
 #: wpgroupmenu_themes.php:36
 msgid "Yellow"
 msgstr "Jaune"
+
+#~ msgid ""
+#~ "Adds a universal topmenu amoung sister websites. Manage menus from one "
+#~ "central location and use the client plugin on remaining sites."
+#~ msgstr ""
+#~ "Ajouter un menu universel à votre réseau de sites. Gérer ce menu depuis "
+#~ "une seule interface."
+
+#~ msgid " was successfully deleted"
+#~ msgstr "a été supprimé avec succès"
 
 #~ msgid ""
 #~ "For more help on questions and issues please visit the <a href='http://"

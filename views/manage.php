@@ -28,7 +28,7 @@ function wpgroupmenu_deleteSite($id, $message){
         wpgroupmenu_message( __("You do not have permission to delete this entry", "wgm") );
     }
     if($message){
-        wpgroupmenu_message( $siteName->siteName . __(" was successfully deleted", "wgm") );
+        wpgroupmenu_message( '"' . $siteName->siteName . '" ' . __("was successfully deleted", "wgm") );
     }
 }
 
