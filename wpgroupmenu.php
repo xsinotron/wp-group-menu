@@ -99,6 +99,9 @@ function wpgroupmenu_dashboard() {
     }else {
         wpgroupmenu_admin_tabs('manage');
     }
+    if ( isset ( $_GET['ajax'] ) ) {
+
+    } else
     if ( $pagenow == 'admin.php' && $_GET['page'] == 'wpgroupmenu' ) {
         $tab = ( isset ( $_GET['tab'] ) ) ? $_GET['tab'] : 'manage';
         switch ( $tab ){
@@ -110,6 +113,7 @@ function wpgroupmenu_dashboard() {
                 break;
             default:
                 include 'views/manage.php';
+                break;
         }
     }
 }
@@ -137,6 +141,7 @@ function wpgroupmenu_admin_util() {
     wp_enqueue_script( 'admin_scripts', plugins_url('js/admin.js'     , __FILE__), array( 'jquery' ));
     wp_localize_script( 'ajax_scripts', 'front_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
     wp_enqueue_style(  'style', plugins_url('css/admin.css', __FILE__) );
+    wp_enqueue_style(  'dialog', plugins_url('css/dialog.css', __FILE__) );
     wp_enqueue_style(  'font_awesome', plugins_url('vendor/font-awesome-4.7.0/css/font-awesome.min.css', __FILE__) );
     wp_enqueue_script( 'jquery-ui' );
     $ui = $wp_scripts->query('jquery-ui-core');
@@ -151,7 +156,7 @@ function wpgroupmenu_front_util() {
     wp_enqueue_script( 'menu_scripts' , plugins_url('js/group-menu.js', __FILE__), array( 'jquery' ));
     wp_enqueue_style(  'font_awesome',  plugins_url('vendor/font-awesome-4.7.0/css/font-awesome.min.css', __FILE__) );
     wp_enqueue_style(  'menu_style',    plugins_url("css/menu.css" , __FILE__) );
-    wp_enqueue_style(  'glyphe_style',    plugins_url("css/glyphicon.css" , __FILE__) );
+    wp_enqueue_style(  'glyphe_style',  plugins_url("css/glyphicon.css" , __FILE__) );
     wp_enqueue_style(  "$style_style",  plugins_url("css/$style.css" , __FILE__) );
 }
 

@@ -1,0 +1,298 @@
+.module-settings-container {
+	position: fixed;
+	top: 52px;
+	right: 20px;
+	bottom: 20px;
+	left: 20px;
+	margin-left: 160px;
+	background: #fff;
+	box-shadow: 0 0 20px rgba(0,0,0,0.2);
+	z-index: 510;
+    display: none;
+}
+.dialog-navigation,
+.dialog-content-footer {
+	display: block;
+}
+.list-content-footer,
+#save {
+	display: none;
+}
+.module-settings-content-container {
+	position: absolute;
+	top: 40px;
+	right: 0;
+	bottom: 60px;
+	left: 0;
+	overflow: auto;
+	padding: 25px 50px;
+}
+.module-settings-content {
+	width: 100%;
+	max-width: 700px;
+	margin: 0 auto;
+}
+.module-settings-content .module-description p {
+	font-size: 16px;
+}
+.dialog-header {
+	display: block;
+	font-size: 20px;
+}
+
+/* Override max width for user security check */
+#module-card-user-security-check .module-settings-content {
+	max-width: 100%;
+	position: relative;
+}
+@media screen and (max-width: 782px) {
+	#module-card-user-security-check  p.search-box {
+		width: 100%;
+	}
+	#user-table {
+		padding-bottom: 100px;
+	}
+}
+
+/* Correct font size of user table nav in user security check */
+#module-card-user-security-check .tablenav {
+	font-size: 12px;
+}
+.module-pro-upsell {
+	opacity: .5;
+}
+
+.pro-upsell {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+	text-decoration: none;
+}
+
+@media ( max-width: 960px ) {
+	.module-settings-container {
+		margin-left: 36px;
+	}
+}
+@media ( max-width: 782px ) {
+	.module-settings-container {
+		margin-left: 0px;
+		top: 0px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 100000; /* to get above wp admin bar */
+	}
+	.module-settings-content-container {
+		padding: 15px 30px;
+	}
+}
+.admin-page fieldset {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+/*
+ * Grid Settings dialog
+ */
+body.dialog-open {
+	/* This is set to keep the body from scrolling when dialog is open */
+	overflow: hidden;
+}
+.dialog-background {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.2);
+	z-index: 500;
+	cursor: pointer;
+}
+.dialog-navigation {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 40px;
+	border-bottom: 1px solid #ddd;
+}
+.dialog-navigation > h2 {
+    float: left;
+    margin: 0.7em 0 0.7em 0.7em;
+}
+.dialog-navigation button {
+	width: 40px;
+	height: 39px;
+	float: right;
+	background: #fff;
+	border: none;
+	outline: none;
+	border-left: 1px solid #ddd;
+	font-family: dashicons;
+	font-size: 20px;
+}
+.dialog-navigation button:hover,
+.dialog-navigation button:focus {
+	background: #efefef;
+	cursor: pointer;
+}
+.dialog-navigation button.left:before {
+	content: '\f341';
+}
+.dialog-navigation button.right:before {
+	content: '\f345';
+}
+.dialog-navigation button.close-dialog:before {
+	content: '\f335';
+}
+.dialog-content-footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border-top: 1px solid #ddd;
+	padding: 15px;
+	background: #efefef;
+	box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+}
+.dialog-content-footer .align-left{
+	float: left;
+}
+
+.dialog-content-footer .align-right{
+	float: right;
+}
+
+/*
+ * dialog Settings
+ */
+.settings-section {
+	border-top: 1px solid #ddd;
+	margin-top: 20px;
+	padding-top: 20px;
+}
+.settings-section label {
+	font-weight: bold;
+}
+.settings-section .setting-field {
+	margin-bottom: 1.5em;
+}
+
+
+
+/*
+ * Main content area and module cards
+ */
+.module-section-heading {
+	margin: 0 0 1em 0;
+	overflow: hidden;
+}
+.settings-view-toggle {
+	float: left;
+	margin-right: 1em;
+	padding: .35em 0;
+}
+.settings-view-toggle a,
+.settings-view-toggle a:before {
+	color: #b4b9be;
+	padding: 0 .25em 0 0;
+}
+.settings-view-toggle a:hover,
+.settings-view-toggle a:focus {
+	color: #999;
+	cursor: pointer;
+}
+.settings-view-toggle a.selected {
+	color: #00a0d2;
+}
+.feature-search {
+	float: left;
+}
+.feature-tabs {
+	float: right;
+	margin: 0;
+}
+.module-cards-container {
+	clear: both;
+	box-sizing: border-box;
+}
+.module-cards {
+	text-align: justify;
+	font-size: 0.1px;
+}
+.module-cards:after {
+	content: '';
+	display: inline-block;
+	width: 100%;
+}
+.module-card,
+.module-card-filler {
+	font-size: 16px;
+	display: inline-block;
+	width: 100%;
+	max-width: 32%;
+	text-align: left;
+	margin-bottom: 2%;
+	vertical-align: top;
+}
+
+.module-card-content {
+	font-size: 16px;
+	position: relative;
+	background: #fff;
+	border-left: 3px solid #afafaf;
+	box-shadow: 1px 1px 0px rgba(0,0,0,.1);
+	padding: 1em;
+}
+#poststuff .module-card h2 {
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+}
+.module-card-content .module-description {
+	display: block;
+}
+.module-type-enabled .module-card-content {
+	background: #f7fcfe;
+	border-left-color: #00a0d2;
+	box-shadow: 1px 1px 0px rgba(0,0,0,.1);
+}
+.module-card-content .module-actions {
+	float: none;
+	margin: 1em 0 0 0;
+}
+.module-type-disabled .settings-module-settings,
+.module-type-disabled .module-settings-save,
+.module-type-disabled .list-content-footer {
+	display: none;
+}
+.module-type-disabled .module-settings-container {
+	padding: 2em;
+}
+.module-settings-content pre{
+	background: #f1f1f1;
+	overflow:scroll;
+	padding: 1em;
+}
+.action-table{
+    text-align: right;
+}
+.col-left {
+  width: 50%;
+  float: left;
+}
+.col-right {
+  width: 50%;
+  float: right;
+}
+@media ( max-width: 960px ) {
+	.col-left,
+    .col-right {
+      width: 100%;
+      float: left;
+    }
+}

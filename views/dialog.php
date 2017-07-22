@@ -1,21 +1,21 @@
-<div class="ws-module-settings-container ws-admin-page">
-    <div class="ws-modal-navigation">
+<div class="module-settings-container">
+    <div class="dialog-navigation">
         <h2>Paramétrages de l’emploi du temps 1 - Entrainements</h2>
-        <button class="dashicons ws-close-modal" title="Fermer"></button>
-        <button class="ws-right dashicons" title="Suivant"><span class="screen-reader-text">Suivant</span></button>
-        <button class="ws-left dashicons" title="Précédent"><span class="screen-reader-text">Précédent</span></button>
+        <button class="dashicons close-dialog" title="Fermer"></button>
+        <button class="right dashicons" title="Suivant"><span class="screen-reader-text">Suivant</span></button>
+        <button class="left dashicons" title="Précédent"><span class="screen-reader-text">Précédent</span></button>
     </div>
-    <div class="ws-module-settings-content-container">
-        <div class="ws-module-settings-content">
+    <div class="module-settings-content-container">
+        <div class="module-settings-content">
             <h3 class="nav-tab-wrapper" data-selected="">
-                <a class="nav-tab ws-nav-tab-general nav-tab-active" data-nav="general" href="?page=weekly-schedule&amp;settings=general&amp;schedule=1">Réglages</a>
-                <a class="nav-tab ws-nav-tab-categories" data-nav="categories" href="?page=weekly-schedule&amp;settings=categories&amp;schedule=1">Catégories</a>
-                <a class="nav-tab ws-nav-tab-items" data-nav="items" href="?page=weekly-schedule&amp;settings=items&amp;schedule=1">Horaires</a>
-                <a class="nav-tab ws-nav-tab-days" data-nav="days" href="?page=weekly-schedule&amp;settings=days&amp;schedule=1">Jours</a>
+                <a class="nav-tab nav-tab-general nav-tab-active" data-nav="general" href="?page=weekly-schedule&amp;settings=general&amp;schedule=1">Réglages</a>
+                <a class="nav-tab nav-tab-categories" data-nav="categories" href="?page=weekly-schedule&amp;settings=categories&amp;schedule=1">Catégories</a>
+                <a class="nav-tab nav-tab-items" data-nav="items" href="?page=weekly-schedule&amp;settings=items&amp;schedule=1">Horaires</a>
+                <a class="nav-tab nav-tab-days" data-nav="days" href="?page=weekly-schedule&amp;settings=days&amp;schedule=1">Jours</a>
             </h3>
-            <div class="ws-tab-content ws-general" style="display: block;">
+            <div class="tab-content general" style="display: block;">
                 <h3>Réglages</h3>
-                <form class="form-wrap" name="wsadminform" action="http://localhost/ymaa/wp-admin/admin.php?page=weekly-schedule" method="post" id="ws-config">
+                <form class="form-wrap" name="wsadminform" action="http://localhost/ymaa/wp-admin/admin.php?page=weekly-schedule" method="post" id="config">
                     <input type="hidden" id="_wpnonce" name="_wpnonce" value="92c4472010"><input type="hidden" name="_wp_http_referer" value="/ymaa/wp-admin/admin.php?page=weekly-schedule&amp;settings=&amp;schedule=1">                    <!-- NAME -->
                     <div class="form-field">
                         <label>Nom</label>
@@ -192,15 +192,15 @@
                 </form>
             </div>
         </div>
-        <div class="ws-module-settings-content hidden hide">
-            <h3 class="ws-modal-header">Security Check</h3>
-            <div class="ws-module-messages-container"></div>
-            <div class="ws-module-settings-content-main">
-                <div class="ws-settings-module-description"></div>
-                <div class="ws-settings-module-settings">
+        <div class="module-settings-content hidden hide">
+            <h3 class="dialog-header">Security Check</h3>
+            <div class="module-messages-container"></div>
+            <div class="module-settings-content-main">
+                <div class="settings-module-description"></div>
+                <div class="settings-module-settings">
                     <div>
                         <p>When the button below is clicked the following modules will be enabled and configured:</p>
-                        <ul class="ws-list">
+                        <ul class="list">
                             <li>
                                 <p>Utilisateurs bannis</p>
                             </li>
@@ -226,8 +226,9 @@
             </div>
         </div>
     </div>
-    <div class="ws-modal-content-footer">
-        <button title="Valider" class="button button-primary align-left ws-close-modal">Valider</button>
-        <button title="Annuler" class="button button-secondary align-right ws-module-settings-cancel">Annuler</button>
+    <div class="dialog-content-footer">
+        <button title="Valider" class="button button-primary align-left module-settings-valid">Valider</button>
+        <button title="Annuler" class="button button-secondary align-right module-settings-cancel">Annuler</button>
     </div>
 </div>
+<script type="text/javascript" src="<?=plugins_url('wp-group-menu');?>/js/dialog.js"></script>

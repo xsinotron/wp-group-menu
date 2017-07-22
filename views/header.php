@@ -7,3 +7,4 @@
         <?=__("Need help?",'wgm');?>
         <input class="button-primary" type="button" value="Support" onclick="window.open('http://www.vspider.com/support')"/>
 </div>
+<script type="text/javascript">window.plugin_url="<?=plugins_url('wp-group-menu');?>";</script>

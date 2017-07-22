@@ -172,3 +172,35 @@ function wpgroupmenu_loadCssPreview(plugin_url, style){
     var url = plugin_url + style.value + '.png';
     jQuery("#wpgm_css_image").html("<img src=" +url + ">");
 }
+(function(){
+    var window = this,
+        $      = window.jQuery,
+        btnADD = $("#wpgm_addSite");
+    if ($ === undefined) alert("jquery n'existe pas!");
+    // TODO :
+    // initialisation
+    function wpgroupmenu_init() {
+        $("body").removeClass("dialog-open");
+        btnADD.off().on("click", wpgroupmenu_load_form);
+    }
+    // function de chargement AJAX du formulaire
+    function wpgroupmenu_load_form() {
+        var source = this;
+        $.ajax({
+            url: '?page=wpgroupmenu&tab=manage',
+            data: {
+                ajax: "dialog-new"
+            },
+            dataType: "html",
+            complete: function (callback) {
+                $("#wpbody-content").append(callback.responseText);
+            }
+        });
+        $(".module-settings-container").show().addClass("open");
+        $("body").addClass("dialog-open");
+    }
+    // function d'envoi AJAX du formulaire
+    function wpgroupmenu_send_form() {
+        alert("send");
+    }//wpgroupmenu_init();
+})();
