@@ -36,7 +36,7 @@ function wpgroupmenu_showSites(){
     ?>
     <h2>
         <?=__('Sites','wgm');?>
-        <input type="button" class="button-primary" id="wpgm_addSite" value="<?=__('Add Site','wgm');?>">
+        <input type="button" class="button-primary" id="wpgm_addSite" value="<?=__('Add Site','wgm');?>" onclick="wpgroupmenu_addSite()">
     </h2>
     <div id="dialog-form" class="hidden">
         <form>

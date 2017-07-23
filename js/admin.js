@@ -27,14 +27,13 @@ function checkRegexp( o, regexp, n ) {
 }
 
 function wpgroupmenu_addSite(){
-    var siteName   = jQuery( "#siteName"   ),
-        siteUrl    = jQuery( "#siteUrl"    ),
-        siteAlt    = jQuery( "#siteAlt"    ),
-        siteTarget = jQuery( "#siteTarget" ),
-        siteOrder  = jQuery( "#siteOrder"  ),
-        //
-        allFields  = jQuery( [] ).add( siteName ).add( siteUrl ),
-        tips       = jQuery( ".validateTips" );
+   var siteName   = jQuery( "input#siteName"   ),
+       siteUrl    = jQuery( "input#siteUrl"    ),
+       siteAlt    = jQuery( "input#siteAlt"    ),
+       siteTarget = jQuery( "select#siteTarget" ),
+       siteOrder  = jQuery( "select#siteOrder"  ),
+       allFields  = jQuery( [] ).add(siteName).add(siteUrl),
+       tips       = jQuery( "p.validateTips" );
 
     jQuery( "#dialog-form" ).dialog({
         dialogClass   : 'wp-dialog',
@@ -82,14 +81,14 @@ function wpgroupmenu_addSite(){
 }
 
 function wpgroupmenu_editSite(id){
-   var siteName   = jQuery( "#siteName"   ),
-       siteUrl    = jQuery( "#siteUrl"    ),
-       siteAlt    = jQuery( "#siteAlt"    ),
-       siteTarget = jQuery( "#siteTarget" ),
-       siteOrder  = jQuery( "#siteOrder"  ),
+   var siteName   = jQuery( "input#siteName"   ),
+       siteUrl    = jQuery( "input#siteUrl"    ),
+       siteAlt    = jQuery( "input#siteAlt"    ),
+       siteTarget = jQuery( "select#siteTarget" ),
+       siteOrder  = jQuery( "select#siteOrder"  ),
        allFields  = jQuery( [] ).add(siteName).add(siteUrl).add(siteAlt).add(siteTarget).add(siteOrder),
-       tips       = jQuery( ".validateTips" ),
-       editBox    = jQuery( "#dialog-form" );
+       tips       = jQuery( "p.validateTips" ),
+       editBox    = jQuery( "div#dialog-form" );
 
     editBox.dialog({
         dialogClass   : 'wp-dialog',
