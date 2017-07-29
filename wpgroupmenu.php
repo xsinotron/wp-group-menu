@@ -34,19 +34,54 @@ defined('ABSPATH') or die("ERROR: You do not have permission to access this page
 define('WPGROUPMENU_ACCESS_LEVEL', 'manage_options');
 define('WPGROUPMENU_PLUGIN_DIR', dirname(__FILE__).'/');
 define('WPGROUPMENU_JSON', WPGROUPMENU_PLUGIN_DIR . 'menus.json');
-function wgm_load_translation_files() {
-    load_plugin_textdomain('wgm', false, basename( dirname( __FILE__ ) ) . '/languages/');
-}
-add_action('plugins_loaded', 'wgm_load_translation_files');
-add_action('init', 'wpgroupmenu_functions');
+
+add_action('plugins_loaded',      'wgm_load_translation_files');
+add_action('get_header',          'wpgroupmenu_front_css_util', false);
+add_action('get_footer',          'wpgroupmenu_front_js_util', false);
+add_action('customize_register',  'wgm_customize_register' );
+add_action('init',                'wpgroupmenu_functions');
 add_action('wp_ajax_submit_site', 'wpgroupmenu_manageSites');
-add_action('admin_menu', 'register_wpgroupmenu_menu');
-add_action('wp_head', 'wpgroupmenu_front_util');
+add_action('admin_menu',          'register_wpgroupmenu_menu');
 add_filter('wp_head', 'wpgroupmenu_showmenu');
 register_activation_hook(__FILE__,'wpgroupmenu_install');
 register_activation_hook(__FILE__,'wpgroupmenu_initialize');
+global $pagenow;
+if ( $_GET['page'] == 'wpgroupmenu' ){
+       add_action('admin_head', 'wpgroupmenu_admin_util');
+} else add_action('admin_head', 'wpgroupmenu_admin_util');
 
 
+/**
+ * Traduction
+ */
+function wgm_load_translation_files() {
+    load_plugin_textdomain('wgm', false, basename( dirname( __FILE__ ) ) . '/languages/');
+}
+/**
+ * TODO test d'insertion d'éléments à la partie "personnalisé"
+ * @param  [type] $wp_customize [description]
+ * @return [type]               [description]
+ */
+function wgm_customize_register( $wp_customize ) {
+   //All our sections, settings, and controls will be added here
+   $wp_customize->add_setting( 'header_textcolor' , array(
+    'default'   => '#000000',
+    'transport' => 'refresh',
+    )
+	);
+   $wp_customize->add_setting( 'header_backgroundcolor' , array(
+    'default'   => '#000000',
+    'transport' => 'refresh',
+    )
+	);
+	$wp_customize->add_section( 'mytheme_new_section_name' , array(
+    'title'      => __( 'Visible Section Name', 'wgm' ),
+    'priority'   => 30,
+) );
+}
+/**
+ * Définition des menus de la partie admin du site
+ */
 function register_wpgroupmenu_menu(){
     // MENU
     add_menu_page(
@@ -58,7 +93,7 @@ function register_wpgroupmenu_menu(){
         plugins_url( 'images/icon.png', __FILE__), // icon url
         99                                         //position
     );
-    // SUB-MENUS
+        // SUB-MENUS
         add_submenu_page(
             'wpgroupmenu',                         // parent slug
             __('Manage Menus', 'wgm'),             // page title
@@ -82,12 +117,6 @@ function register_wpgroupmenu_menu(){
         );
     remove_submenu_page('wpgroupmenu','wpgroupmenu');
 }
-
-global $pagenow;
-if ( $_GET['page'] == 'wpgroupmenu' ){
-       add_action('admin_head', 'wpgroupmenu_admin_util');
-} else add_action('admin_head', 'wpgroupmenu_admin_util');
-
 /*
  * Displays the tabs and manages tabs to be displayed
  */
@@ -150,10 +179,11 @@ function wpgroupmenu_admin_util() {
     wp_enqueue_script( 'jquery-ui-dialog' );
 }
 
-function wpgroupmenu_front_util() {
-    $style = get_option('wpgroupmenu_css');
-  //wp_enqueue_script( 'scripts'   , plugins_url('js/scripts.js', __FILE__), array( 'jquery' ));
+function wpgroupmenu_front_js_util() {
     wp_enqueue_script( 'menu_scripts' , plugins_url('js/group-menu.js', __FILE__), array( 'jquery' ));
+}
+function wpgroupmenu_front_css_util() {
+    $style = get_option('wpgroupmenu_css');wp_enqueue_script( 'menu_scripts' , plugins_url('js/group-menu.js', __FILE__), array( 'jquery' ));
     wp_enqueue_style(  'font_awesome',  plugins_url('vendor/font-awesome-4.7.0/css/font-awesome.min.css', __FILE__) );
     wp_enqueue_style(  'menu_style',    plugins_url("css/menu.css" , __FILE__) );
     wp_enqueue_style(  'glyphe_style',  plugins_url("css/glyphicon.css" , __FILE__) );

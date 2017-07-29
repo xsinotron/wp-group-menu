@@ -1,3 +1,4 @@
+<?php print_r(get_post_types() );?> 
 <div class="wpgroupmenu">
     <div class="wpgroupmenu_nav">
         <ul>
